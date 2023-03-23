@@ -11,14 +11,6 @@ allow_networks:
     description: "Private network"
   - net: 192.168.0.0/16
     description: "Private network"
-  - net: "128.199.104.192"
-    description: "Zabbix"
-  - net: "68.183.211.248"
-    description: "Office VPN"
-  - net: "91.225.167.30"
-    description: "Office Poshtova"
-  - net: "31.43.62.140"
-    description: "chip temp"
 
 public_ports:
   - port: 22
