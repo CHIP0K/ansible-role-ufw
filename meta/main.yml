@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Ihor
+  description: Configuring your UFW firewall
+  company: chip0k
+  license: license (GPL-2.0-or-later, MIT, etc)
+  min_ansible_version: 2.1
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 18.04
+        - 20.04
+        - 21.04
+        - 21.10
+        - 22.04
+  galaxy_tags: [ufw, firewall, system]
+dependencies: []

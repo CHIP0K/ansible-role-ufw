@@ -1,0 +1,24 @@
+---
+# defaults file for ufw
+reset_old_rules: false
+
+allow_networks:
+  - net: "127.0.0.1/8"
+    description: "loop"
+  - net: 10.0.0.0/8
+    description: "Private network"
+  - net: 172.16.0.0/12
+    description: "Private network"
+  - net: 192.168.0.0/16
+    description: "Private network"
+
+public_ports:
+  - port: 22
+    protocol: tcp
+    description: "SSH"
+  - port: 80
+    protocol: tcp
+    description: "HTTP"
+  - port: 443
+    protocol: tcp
+    description: "HTTPS"
