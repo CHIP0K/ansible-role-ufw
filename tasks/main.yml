@@ -16,7 +16,7 @@
 
 - name: Set logging
   community.general.ufw:
-    logging: 'on'
+    logging: "on"
 
 - name: Open public ports
   community.general.ufw:
@@ -29,14 +29,14 @@
 - name: Allow all access from networks to this host
   community.general.ufw:
     rule: allow
-    src: '{{ item.net }}'
+    src: "{{ item.net }}"
     comment: "{{ item.description }}"
   loop: "{{ allow_networks }}"
 
 - name: Allow all access from group hosts
   community.general.ufw:
     rule: allow
-    src: '{{ item }}'
+    src: "{{ item }}"
     comment: "Ansible group hosts access"
   loop: "{{ allow_group_hosts }}"
   when: allow_group_hosts is defined
@@ -50,4 +50,3 @@
   community.general.ufw:
     direction: outgoing
     default: allow
-...

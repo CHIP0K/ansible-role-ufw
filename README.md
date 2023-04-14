@@ -1,31 +1,52 @@
-Role Name
+UFW firewall configuring
 =========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Configuring your UFW firewall
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This is example for group vars:
 
-Dependencies
-------------
+```yaml
+---
+# defaults file for ufw
+reset_old_rules: false
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+allow_networks:
+  - net: "127.0.0.1/8"
+    description: "loop"
+  - net: 10.0.0.0/8
+    description: "Private network"
+  - net: 172.16.0.0/12
+    description: "Private network"
+  - net: 192.168.0.0/16
+    description: "Private network"
+  - net: "1.1.1.1"
+    description: "Monitoring "
+
+# Allow all firewall access from group hosts on everyone's nodes
+allow_group_hosts: "{{ groups[group_names | last] | map('extract', hostvars, 'ansible_host') | list  }}"  #inventory_hostname
+
+public_ports:
+  - port: 22
+    protocol: tcp
+    description: "SSH"
+  - port: 80
+    protocol: tcp
+    description: "HTTP"
+  - port: 443
+    protocol: tcp
+    description: "HTTPS"
+```
+
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: ansible-role-ufw }
 
 License
 -------
