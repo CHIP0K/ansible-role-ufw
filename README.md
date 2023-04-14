@@ -44,9 +44,11 @@ public_ports:
 Example Playbook
 ----------------
 
+```yaml
     - hosts: servers
       roles:
          - { role: ansible-role-ufw }
+```
 
 License
 -------
